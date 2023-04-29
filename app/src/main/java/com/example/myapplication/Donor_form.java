@@ -1,4 +1,4 @@
-package com.example.myapplication.;
+package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Upload_Details extends AppCompatActivity {
+public class Donor_form extends AppCompatActivity {
     Button btnsubmit,contactngo;
     EditText inputUsername,inputContact,inputfoodtype,inputfoodquantity,inputcity,inputother;
     DatabaseReference databaseUsers;

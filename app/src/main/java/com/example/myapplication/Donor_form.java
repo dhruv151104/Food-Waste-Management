@@ -1,4 +1,4 @@
-package com.example.myapplication.;
+package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Upload_Details extends AppCompatActivity {
+public class Donor_form extends AppCompatActivity {
     Button btnsubmit,contactngo;
     EditText inputUsername,inputContact,inputfoodtype,inputfoodquantity,inputcity,inputother;
     DatabaseReference databaseUsers;
@@ -38,7 +38,7 @@ public class Upload_Details extends AppCompatActivity {
         contactngo.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Upload_Details.this,NGO.class));
+                startActivity(new Intent(Donor_form.this,NGO.class));
             }
         });
 
@@ -59,16 +59,16 @@ public class Upload_Details extends AppCompatActivity {
         String other=inputother.getText().toString();
         String id = databaseUsers.push().getKey();
 
-        details user= new details(name,contact,food,quantity,city,other);
-        databaseUsers.child("users").child(id).setValue(user)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(Upload_Details.this, "Food Details Inserted", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+//        details user= new details(name,contact,food,quantity,city,other);
+//        databaseUsers.child("users").child(id).setValue(user)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(Upload_Details.this, "Food Details Inserted", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
 
 
 

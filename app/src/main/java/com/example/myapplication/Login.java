@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth auth;
     EditText login_email,login_password;
     Button login_btn;
-    TextView signup_redirect;
+    TextView signup_redirect,forgot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
         login_password=findViewById(R.id.login_password);
         login_btn=findViewById(R.id.login_btn);
         signup_redirect=findViewById(R.id.signup_redirect);
+        forgot=findViewById(R.id.forgot);
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +48,7 @@ public class Login extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(Login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Login.this,MainActivity.class));
+                                        startActivity(new Intent(Login.this,Homepage.class));
                                         finish();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
@@ -75,5 +76,20 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this,SignUp.class));
             }
         });
+
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,ForgotPassword.class));
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(Login.this, MainActivity.class));
+        finish();
+        finishAffinity();
     }
 }

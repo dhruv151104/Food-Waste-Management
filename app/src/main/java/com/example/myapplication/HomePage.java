@@ -55,7 +55,7 @@ public class HomePage extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //   startActivity(new Intent(HomeActivity.this, viewdetails.class));
+                //  startActivity(new Intent(HomeActivity.this, viewdetails.class));
             }
         });
 

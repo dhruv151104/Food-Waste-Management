@@ -37,7 +37,7 @@ public class HomePage extends AppCompatActivity {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(HomePage.this,.class));
+                startActivity(new Intent(HomePage.this,activity_contactUs.class));
             }
         });
 

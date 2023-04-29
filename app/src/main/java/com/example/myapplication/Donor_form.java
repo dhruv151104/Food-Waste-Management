@@ -1,14 +1,17 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,9 +20,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Donor_form extends AppCompatActivity {
-    Button btnsubmit,contactngo;
+    Button btnsubmit,img_btn;
     EditText inputUsername,inputContact,inputfoodtype,inputfoodquantity,inputcity,inputother;
     DatabaseReference databaseUsers;
+    ImageView donot_img;
+    Uri imageUri;
+    ActivityDonor_formBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,23 +38,41 @@ public class Donor_form extends AppCompatActivity {
         inputfoodtype=findViewById(R.id.inputfoodtype);
         inputfoodquantity=findViewById(R.id.inputfoodquantity);
         inputcity=findViewById(R.id.inputcity);
-        inputother=findViewById(R.id.inputother);
-        contactngo=findViewById(R.id.contactngo);
+        img_btn = findViewById(R.id.img_btn);
         databaseUsers= FirebaseDatabase.getInstance().getReference();
 
-        contactngo.setOnClickListener(new OnClickListener() {
+//        contactngo.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//              //  startActivity(new Intent(Upload_Details.this,NGO.class));
+//            }
+//        });
+        img_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  startActivity(new Intent(Upload_Details.this,NGO.class));
+                selectImage();
             }
         });
-
         btnsubmit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //InsertData();
             }
         });
+    }
+    private void selectImage(){
+        Intent i = new Intent();
+        i.setType("image/");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(i,100);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 100 && data != null && data.getData() != null){
+            imageUri = data.getData();
+            databaseUsers.firebaseimage.setImageUri(imageUri);
+        }
     }
 
 //    public void InsertData() {

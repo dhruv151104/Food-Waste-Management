@@ -22,6 +22,11 @@ public class user_option extends AppCompatActivity {
                 startActivity(new Intent(user_option.this,null));
             }
         });
-
+        Ngo_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(user_option.this,null));
+            }
+        });
     }
 }

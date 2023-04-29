@@ -12,10 +12,13 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".user_option"
+            android:exported="false" />
+        <activity
             android:name=".HomePage"
             android:exported="false" />
         <activity
-            android:name=".Homepage"
+            android:name=".activity_contactUs"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword"

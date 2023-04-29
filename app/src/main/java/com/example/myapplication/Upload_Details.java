@@ -87,7 +87,7 @@ public class Upload_Details extends AppCompatActivity {
 //            String id = databaseUsers.push().getKey();
 
         if (mImageUri != null) {
-            StorageReference fileReference = mStorageRef. child(System. currentTimeMillis ()
+            StorageReference fileReference = mStorageRef.child(System. currentTimeMillis ()
                     + "." + getFileExtension(mImageUri));
             fileReference.putFile(mImageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

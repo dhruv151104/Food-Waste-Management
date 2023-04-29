@@ -66,4 +66,12 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        startActivity(new Intent(SignUp.this, Login.class));
+        finish();
+        finishAffinity();
+    }
 }

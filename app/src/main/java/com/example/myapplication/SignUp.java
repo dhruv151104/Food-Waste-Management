@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,17 +13,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.core.Tag;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignUp extends AppCompatActivity {
+    public static final String TAG="TAG";
     private FirebaseAuth auth;
     EditText signup_email,signup_password,signup_phn,signup_name;
     Button signup_btn;
     TextView login_redirect;
-    FirebaseFirestore fstore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +40,23 @@ public class SignUp extends AppCompatActivity {
         signup_email=findViewById(R.id.signup_email);
         signup_password=findViewById(R.id.signup_password);
         signup_btn=findViewById(R.id.signup_btn);
-        signup_name=findViewById(R.id.signup_name);
-        signup_email=findViewById(R.id.signup_email);
         login_redirect=findViewById(R.id.login_redirect);
+
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user=signup_email.getText().toString().trim();
+                String email=signup_email.getText().toString().trim();
                 String pass=signup_password.getText().toString().trim();
-                String fname=signup_name.getText().toString().trim();
-                String phn= signup_phn.getText().toString().trim();
 
-                if (user.isEmpty()){
+                if (email.isEmpty()){
                     signup_email.setError("Email Cannot Be Empty");
                 }
                 if (pass.isEmpty()){
                     signup_password.setError("Password Cannot Be Empty");
                 }
                 else {
-                    auth.createUserWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){

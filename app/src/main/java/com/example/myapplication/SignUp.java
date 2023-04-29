@@ -18,8 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.core.Tag;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +59,22 @@ public class SignUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
+
+                                auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+
+                                            if(auth.getCurrentUser().isEmailVerified()){
+                                                startActivity(new Intent(SignUp.this,Homepage.class));
+                                            }
+                                            Toast.makeText(SignUp.this, "SignUp Successfull.Verify your email address...", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(SignUp.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                                 Toast.makeText(SignUp.this, "SignUp Successfull", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(SignUp.this,Login.class));
                             }

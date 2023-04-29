@@ -2,7 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="select">Select the type of food</string>
     <string-array name="spinner">
-        <item>Yes</item>
-        <item>No</item>
+        <item>Veg</item>
+        <item>Non-Veg</item>
     </string-array>
 </resources>

@@ -1,10 +1,9 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity2 extends AppCompatActivity {
+public class onBoard_screen extends AppCompatActivity {
 
     ViewPager mSLideViewPager;
     LinearLayout mDotLayout;
@@ -23,11 +22,11 @@ public class MainActivity2 extends AppCompatActivity {
 
     ViewPagerAdapter viewPagerAdapter;
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_on_board_screen);
 
         backbtn = findViewById(R.id.backbtn);
         nextbtn = findViewById(R.id.nextbtn);
@@ -38,9 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (getitem(0) > 0){
-
                     mSLideViewPager.setCurrentItem(getitem(-1),true);
-
                 }
 
             }
@@ -54,8 +51,8 @@ public class MainActivity2 extends AppCompatActivity {
                     mSLideViewPager.setCurrentItem(getitem(1),true);
                 else {
 
-                    Intent i = new Intent(MainActivity2.this,MainActivity.class);
-                    startActivity(i);
+                    startActivity(new Intent(onBoard_screen.this,MainActivity.class));
+                    //startActivity(i);
                     finish();
 
                 }
@@ -66,12 +63,10 @@ public class MainActivity2 extends AppCompatActivity {
         skipbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(onBoard_screen.this,MainActivity.class));
 
-
-                Intent i = new Intent(MainActivity2.this,MainActivity.class);
-                startActivity(i);
+                //startActivity(i);
                 finish();
-
             }
         });
 

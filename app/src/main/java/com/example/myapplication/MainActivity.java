@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button Donate,Ngo,help;
+    Button Donate,Ngo,help_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         Donate=findViewById(R.id.Donate);
         Ngo=findViewById(R.id.Ngo);
-        help=findViewById(R.id.help);
+        help_btn=findViewById(R.id.help_btn);
 
         Donate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,13 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        help.setOnClickListener(new View.OnClickListener() {
+        help_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MainActivity2.class));
+                startActivity(new Intent(MainActivity.this,onBoard_screen.class));
             }
         });
 
-        //test test
     }
 }

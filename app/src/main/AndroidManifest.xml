@@ -27,6 +27,9 @@
             android:name=".HomePage"
             android:exported="false" />
         <activity
+            android:name=".About_us"
+            android:exported="false" />
+        <activity
             android:name=".Upload_Details"
             android:exported="false" />
         <activity

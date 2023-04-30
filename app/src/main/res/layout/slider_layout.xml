@@ -20,7 +20,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/heading_one"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="14dp" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:fontFamily="@font/poppins_bold"
         android:text="@string/desc_one"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="14dp" />
 
 

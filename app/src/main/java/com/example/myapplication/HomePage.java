@@ -43,13 +43,13 @@ public class HomePage extends AppCompatActivity {
 
 
 
-//        CardView aboutus = findViewById(R.id.aboutus);
-//        aboutus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(HomeActivity.this,aboutus.class));
-//            }
-//        });
+        CardView aboutus = findViewById(R.id.aboutus);
+        aboutus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomePage.this,About_us.class));
+            }
+        });
 
         CardView view = findViewById(R.id.view);
         view.setOnClickListener(new View.OnClickListener() {

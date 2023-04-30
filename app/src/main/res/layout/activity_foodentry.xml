@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="12dp"
     app:cardCornerRadius="12dp"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:background="@drawable/login">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -173,7 +174,9 @@
                 android:textSize="20dp"
                 android:layout_marginLeft="200dp"
                 android:textColor="@color/white"
+                android:background="@color/lavender"
                 android:textStyle="bold"
+                android:padding="10dp"
                 android:textAllCaps="false"/>
 
 

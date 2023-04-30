@@ -14,7 +14,7 @@
         android:layout_toLeftOf="@id/tv"
         android:layout_marginTop="20dp"
         android:layout_marginRight="15dp"
-        android:src="@drawable/aboutUs_img"
+        android:src="@drawable/aboutus_img"
         />
 
     <TextView
@@ -29,6 +29,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"/>
     <TextView
+        android:textColor="@color/black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="23dp"
@@ -42,6 +44,8 @@
         />
 
     <TextView
+        android:textColor="@color/black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/team"
@@ -53,6 +57,8 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:textColor="@color/black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tm1"
@@ -64,6 +70,8 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:textColor="@color/black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tm2"
@@ -75,6 +83,8 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:textColor="@color/black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tm3"
@@ -86,6 +96,8 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:textColor="@color/black"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tm4"

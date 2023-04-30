@@ -77,7 +77,7 @@ public class SignUp extends AppCompatActivity {
                                         if(task.isSuccessful()){
 
                                             if(auth.getCurrentUser().isEmailVerified()){
-                                                startActivity(new Intent(SignUp.this,Homepage.class));
+                                                startActivity(new Intent(SignUp.this,HomePage.class));
                                             }
                                             Toast.makeText(SignUp.this, "SignUp Successfull.Verify your email address...", Toast.LENGTH_SHORT).show();
                                         }

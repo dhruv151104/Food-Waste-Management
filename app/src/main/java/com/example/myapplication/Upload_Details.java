@@ -2,41 +2,33 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import android.content.ContentResolver;
+import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.webkit.MimeTypeMap;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.food_save.upload;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
-
-import java.io.ObjectInputStream;
 
 public class Upload_Details extends AppCompatActivity {
-
-    private static final int PICK_IMAGE_REQUEST = 1;
-    Button btnsubmit,contactngo,img_btn;
+    private  static final String CHANNEL_ID="MY NOTIFICATION";
+    Button btnsubmit,contactngo;
     EditText inputUsername,inputContact,inputfoodtype,inputfoodquantity,inputcity,inputother;
-    ImageView donate_img;
-    private Uri mImageUri;
-    StorageReference mStorageRef;
     DatabaseReference databaseUsers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,92 +41,82 @@ public class Upload_Details extends AppCompatActivity {
         inputfoodtype=findViewById(R.id.inputfoodtype);
         inputfoodquantity=findViewById(R.id.inputfoodquantity);
         inputcity=findViewById(R.id.inputcity);
-        img_btn=findViewById(R.id.img_btn);
-        donate_img=findViewById(R.id.donate_img);
 
-        mStorageRef= FirebaseStorage.getInstance().getReference("Upload");
-        databaseUsers=FirebaseDatabase.getInstance().getReference("Upload");
+        databaseUsers= FirebaseDatabase.getInstance().getReference();
 
+//        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+//            NotificationChannel CHANNEL = new NotificationChannel("MY NOTIFICATION","MY NOTIFICATION", NotificationManager.IMPORTANCE_DEFAULT);
+//            NotificationManager manager = getSystemService(NotificationManager.class);
+//            manager.createNotificationChannel(CHANNEL);
+//        }
 
-//        inputother=findViewById(R.id.inputother);
-//        contactngo=findViewById(R.id.contactngo);
+//        contactngo.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//             //   startActivity(new Intent(Upload_Details.this,NGO.class));
+//            }
+//        });
 
-        img_btn.setOnClickListener(new View.OnClickListener() {
+        btnsubmit.setOnClickListener(new OnClickListener() {
+            @SuppressLint("MissingPermission")
             @Override
-            public void onClick(View v) {
-                openFileChooser();
+            public void onClick(View view) {
+                if(TextUtils.isEmpty(inputUsername.getText().toString())){
+                    inputUsername.setError("Username cannot be empty");
+                    return;
+                }
+                if(TextUtils.isEmpty(inputContact.getText().toString())){
+                    inputContact.setError("Contact Number cannot be empty");
+                    return;
+                }
+                if(TextUtils.isEmpty(inputContact.getText().toString())){
+                    inputContact.setError("Contact Number cannot be empty");
+                    return;
+                }
+                if(TextUtils.isEmpty(inputfoodtype.getText().toString())){
+                    inputfoodtype.setError("Food type cannot be empty");
+                    return;
+                }
+                if(TextUtils.isEmpty(inputfoodquantity.getText().toString())){
+                    inputfoodquantity.setError("Food Quantity cannot be empty");
+                    return;
+                }
+                if(TextUtils.isEmpty(inputcity.getText().toString())){
+                    inputcity.setError("City cannot be empty");
+                    return;
+                }
+                InsertData();
+
+//                NotificationCompat.Builder builder= new NotificationCompat.Builder(Upload_Details.this,"MY NOTIFICATION");
+//                builder.setContentTitle("Food Save");
+//                builder.setContentText("New donor available");
+//                builder.setSmallIcon(R.drawable.notification);
+//                builder.setAutoCancel(true);
+//                builder.setChannelId(CHANNEL_ID);
+//                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(Upload_Details.this);
+//                notificationManagerCompat.notify(1,builder.build());
+
             }
         });
-
-        btnsubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadFile();
-            }
-        });
     }
-    private String getFileExtension(Uri uri) {
-        ContentResolver cR = getContentResolver ();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
-    private void uploadFile() {
-//            String name=inputUsername.getText().toString();
-//            String contact=inputContact.getText().toString();
-//            String food=inputfoodtype.getText().toString();
-//            String quantity=inputfoodquantity.getText().toString();
-//            String city=inputcity.getText().toString();
-//            String id = databaseUsers.push().getKey();
 
-        if (mImageUri != null) {
-            StorageReference fileReference = mStorageRef.child(System. currentTimeMillis ()
-                    + "." + getFileExtension(mImageUri));
-            fileReference.putFile(mImageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            String username=inputUsername.getText().toString().trim();
-                            String contact=inputContact.getText().toString().trim();
-                            String foodtype=inputfoodtype.getText().toString().trim();
-                            String foodquantity=inputfoodquantity.getText().toString().trim();
-                            String foodcity=inputcity.getText().toString().trim();
+    public void InsertData() {
+        String name=inputUsername.getText().toString();
+        String contact=inputContact.getText().toString();
+        String food=inputfoodtype.getText().toString();
+        String quantity=inputfoodquantity.getText().toString();
+        String city=inputcity.getText().toString();
+        String id = databaseUsers.push().getKey();
 
-                            Toast.makeText(Upload_Details.this, "Upload Successful", Toast.LENGTH_SHORT).show();
-                           // Upload_Details upload=new Upload_Details(mImageUri,username,contact,foodtype,foodquantity,foodcity,taskSnapshot.getUploadSessionUri().toString());
-//                            username,contact,foodtype,foodquantity,foodcity,taskSnapshot.getUploadSessionUri().toString()
-
+        upload user= new upload(name,contact,food,quantity,city);
+        databaseUsers.child("users").child(id).setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Upload_Details.this, "Food Details Inserted", Toast.LENGTH_SHORT).show();
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress=(100.0 * taskSnapshot.getBytesTransferred() /taskSnapshot.getTotalByteCount());
-                        }
-                    });
-        } else {
-            Toast.makeText(this, "No File Selected", Toast.LENGTH_SHORT).show();
-        }
-        }
-
-    private void openFileChooser() {
-        Intent intent = new Intent ();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,PICK_IMAGE_REQUEST);
+                    }
+                });
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult (requestCode, resultCode, data);
-        mImageUri=data.getData();
-        Picasso.get().load(mImageUri).into(donate_img);
-    }
-
-
-
 }

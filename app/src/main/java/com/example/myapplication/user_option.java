@@ -25,7 +25,7 @@ public class user_option extends AppCompatActivity {
         Ngo_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(user_option.this,null));
+                startActivity(new Intent(user_option.this,ngo_table.class));
             }
         });
     }

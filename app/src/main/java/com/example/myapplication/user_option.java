@@ -19,7 +19,7 @@ public class user_option extends AppCompatActivity {
         form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(user_option.this,null));
+                startActivity(new Intent(user_option.this,Upload_Details.class));
             }
         });
         Ngo_contact.setOnClickListener(new View.OnClickListener() {

@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Upload_Details"
-    android:background="@drawable/food_background">
+    android:background="@color/black">
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#2F000000"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="42dp" />
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/titleHome"
@@ -32,13 +32,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
-
     <EditText
         android:id="@+id/inputUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/background_bg"
         android:drawableLeft="@drawable/vector_person"
@@ -53,9 +52,10 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleHome" />
+
 
     <EditText
         android:id="@+id/inputContact"
@@ -87,7 +87,7 @@
         android:drawableLeft="@drawable/vector_foodtype"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Food Type(veg, non-veg, jain)"
+        android:hint="Food Type(veg, non-veg)"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -124,12 +124,12 @@
         android:id="@+id/inputcity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/background_bg"
         android:drawableLeft="@drawable/vector_city"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Address"
+        android:hint="City"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -138,25 +138,27 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputfoodquantity"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/inputfoodquantity"
         app:layout_constraintTop_toBottomOf="@+id/inputfoodquantity" />
-
-
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="104dp"
         android:background="@drawable/btn_bg"
         android:text="Submit"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/inputcity"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/inputcity"
         app:layout_constraintTop_toBottomOf="@+id/inputcity" />
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

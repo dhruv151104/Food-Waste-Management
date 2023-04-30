@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,13 +18,17 @@
             android:name=".HomePage"
             android:exported="false" />
         <activity
-            android:name=".ForgotPassword"
-            android:exported="false" />
-
-        <activity
             android:name=".Upload_Details"
             android:exported="false" />
-
+        <activity
+            android:name=".viewdetails"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".onBoard_screen"
+            android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="false" />
@@ -32,7 +38,9 @@
         <activity
             android:name=".SignUp"
             android:exported="false" />
-
+        <activity
+            android:name=".activity_contactUs"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

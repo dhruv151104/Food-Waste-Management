@@ -1,20 +1,20 @@
-package com.example.food_save;
+package com.example.myapplication;
 
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
-public class upload {
+public class details {
     private String inputUsername;
     private String inputContact;
     private String inputfoodtype;
     private String inputfoodquantity;
     private String inputcity;
 
-    public upload() {
+    public details() {
     }
 
-    public upload(String inputUsername, String inputContact, String inputfoodtype, String inputfoodquantity, String inputcity) {
+    public details(String inputUsername, String inputContact, String inputfoodtype, String inputfoodquantity, String inputcity) {
         this.inputUsername = inputUsername;
         this.inputContact = inputContact;
         this.inputfoodtype = inputfoodtype;
